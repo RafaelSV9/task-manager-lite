@@ -64,7 +64,7 @@ Copiar código
 
 ## ⚙️ Como Rodar
 
-```bash
+bash
 git clone https://github.com/SEU-USUARIO/task-manager-lite.git
 cd task-manager-lite
 mvn spring-boot:run
