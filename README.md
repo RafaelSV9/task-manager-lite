@@ -2,228 +2,140 @@
   <img src="https://svg-banners.vercel.app/api?type=origin&text1=Task%20Manager%20Lite%20✨&text2=Spring%20Boot%20API%20REST" width="100%" alt="Task Manager Lite Banner">
 </p>
 
-# Task Manager Lite
+<h1 align="center">📌 Task Manager Lite – API REST em Java + Spring Boot</h1>
 
-Simple RESTful API for managing tasks, built with **Java 17 + Spring Boot 3 + H2**.
-
-Ideal para portfólio: mostra domínio de API REST, camadas bem definidas (controller, service, repository) e uso de banco em memória.
-
----
-
-## 🚀 Tecnologias
-
-- Java 17
-- Spring Boot 3 (Web, Data JPA, Validation)
-- H2 Database (em memória)
-- Maven
+<p align="center">
+  <img src="https://img.shields.io/badge/Java-17-007396?logo=java" />
+  <img src="https://img.shields.io/badge/Spring%20Boot-3.3.4-6DB33F?logo=springboot" />
+  <img src="https://img.shields.io/badge/Status-Online-brightgreen" />
+  <img src="https://img.shields.io/badge/License-MIT-blue" />
+  <a href="https://github.com/SEU-USUARIO">
+    <img src="https://img.shields.io/badge/GitHub-RafaelSV9-000?logo=github" />
+  </a>
+</p>
 
 ---
 
-## 📂 Estrutura do Projeto
+## 🚀 Sobre o Projeto
 
-```text
+O **Task Manager Lite** é uma API REST desenvolvida com **Java 17** e **Spring Boot 3**, projetada para demonstrar boas práticas de backend, arquitetura limpa e uso de tecnologias modernas do ecossistema Spring.
+
+Ideal para:
+- Estudos de desenvolvimento backend
+- Portfólio profissional
+- Entrevistas técnicas
+- Prática de CRUD, DTOs, validação e camadas
+
+---
+
+## 🧱 Tecnologias Utilizadas
+
+<p align="left">
+  <img src="https://img.shields.io/badge/Java-17-007396?logo=java" />
+  <img src="https://img.shields.io/badge/Spring%20Boot-3.3-6DB33F?logo=springboot" />
+  <img src="https://img.shields.io/badge/H2-Database-blue?logo=h2" />
+  <img src="https://img.shields.io/badge/Maven-Build-orange?logo=apachemaven" />
+  <img src="https://img.shields.io/badge/JPA-Hibernate-59666C?logo=hibernate" />
+</p>
+
+---
+
+## 📂 Arquitetura do Projeto
+
 task-manager-lite/
-├── pom.xml
-├── src
-│   ├── main
-│   │   ├── java
-│   │   │   └── com
-│   │   │       └── rafaelsv
-│   │   │           └── taskmanager
-│   │   │               ├── TaskManagerApplication.java
-│   │   │               ├── controller
-│   │   │               │   └── TaskController.java
-│   │   │               ├── dto
-│   │   │               │   ├── TaskRequest.java
-│   │   │               │   └── TaskResponse.java
-│   │   │               ├── model
-│   │   │               │   └── Task.java
-│   │   │               ├── repository
-│   │   │               │   └── TaskRepository.java
-│   │   │               └── service
-│   │   │                   └── TaskService.java
-│   │   └── resources
-│   │       └── application.properties
-```
+├── controller/
+├── dto/
+├── exception/
+├── model/
+├── repository/
+├── service/
+└── TaskManagerApplication.java
+
+markdown
+Copiar código
+
+- **Controller:** entrada das requisições REST  
+- **Service:** regras de negócio  
+- **Repository:** persistência com Spring Data JPA  
+- **DTOs:** request e response  
+- **Exception Handler:** validações e erros padronizados  
 
 ---
 
-## ⚙️ Como rodar
-
-Pré-requisitos:
-
-- Java 17 instalado
-- Maven instalado
-
-### 1️⃣ Clonar o repositório
+## ⚙️ Como Rodar
 
 ```bash
-git clone https://github.com/SEU_USUARIO/task-manager-lite.git
+git clone https://github.com/SEU-USUARIO/task-manager-lite.git
 cd task-manager-lite
-```
-
-### 2️⃣ Rodar o projeto
-
-```bash
 mvn spring-boot:run
-```
+Acesse:
 
-A API ficará disponível em:
+bash
+Copiar código
+http://localhost:8080/api/tasks
+📚 Endpoints
+🔹 Listar tarefas
+GET /api/tasks
 
-```text
-http://localhost:8080
-```
+🔹 Buscar tarefa por ID
+GET /api/tasks/{id}
 
----
+🔹 Criar nova tarefa
+POST /api/tasks
 
-## 📚 Endpoints principais
+🔹 Atualizar tarefa
+PUT /api/tasks/{id}
 
-### 🔹 Listar todas as tarefas
+🔹 Atualizar apenas status
+PATCH /api/tasks/{id}/status
 
-`GET /api/tasks`
+🔹 Deletar tarefa
+DELETE /api/tasks/{id}
 
-**Response 200 OK**
+🗄️ Banco H2
+Acesse:
 
-```json
-[
-  {
-    "id": 1,
-    "title": "Estudar Java",
-    "description": "Praticar Spring Boot",
-    "status": "PENDING",
-    "createdAt": "2025-01-01T10:00:00",
-    "updatedAt": "2025-01-01T10:00:00"
-  }
-]
-```
+bash
+Copiar código
+http://localhost:8080/h2-console
+Configuração:
 
----
+JDBC URL → jdbc:h2:mem:tasksdb
 
-### 🔹 Buscar tarefa por ID
+User → sa
 
-`GET /api/tasks/{id}`
+Password → (vazio)
 
-**Exemplo:**
+🔧 Tratamento de Erros
+Erros retornam payload estruturado:
 
-```http
-GET /api/tasks/1
-```
-
----
-
-### 🔹 Criar nova tarefa
-
-`POST /api/tasks`
-
-**Request body:**
-
-```json
+json
+Copiar código
 {
-  "title": "Estudar Spring Boot",
-  "description": "Criar uma API de tarefas",
-  "status": "PENDING"
-}
-```
-
-**Response 201 Created**
-
-```json
-{
-  "id": 1,
-  "title": "Estudar Spring Boot",
-  "description": "Criar uma API de tarefas",
-  "status": "PENDING",
-  "createdAt": "2025-01-01T10:00:00",
-  "updatedAt": "2025-01-01T10:00:00"
-}
-```
-
----
-
-### 🔹 Atualizar uma tarefa (PUT)
-
-`PUT /api/tasks/{id}`
-
-**Request body:**
-
-```json
-{
-  "title": "Estudar Spring Boot (atualizado)",
-  "description": "Aprimorar API de tarefas",
-  "status": "IN_PROGRESS"
-}
-```
-
----
-
-### 🔹 Atualizar apenas o status (PATCH)
-
-`PATCH /api/tasks/{id}/status`
-
-**Request body:**
-
-```json
-{
-  "status": "DONE"
-}
-```
-
----
-
-### 🔹 Deletar tarefa
-
-`DELETE /api/tasks/{id}`
-
-**Response 204 No Content**
-
----
-
-## 🧪 Validações
-
-- `title` é obrigatório e tem limite de 100 caracteres.
-- `description` tem limite de 1000 caracteres.
-- `status` tem limite de 30 caracteres.
-- Erros de validação retornam **400 Bad Request** com detalhes dos campos inválidos.
-
-Exemplo:
-
-```json
-{
-  "timestamp": "2025-01-01T10:00:00.000000",
+  "timestamp": "2025-01-01T10:00:00",
   "status": 400,
   "errors": {
     "title": "Title is mandatory"
   }
 }
-```
+🛣️ Roadmap / Melhorias Futuras
+ Paginação e filtros
 
----
+ Autenticação JWT
 
-## 🗄️ Banco de dados H2
+ Swagger/OpenAPI
 
-Console do H2 disponível em:
+ Testes unitários (JUnit + Mockito)
 
-```text
-http://localhost:8080/h2-console
-```
+ Deploy em Docker
 
-Config padrão:
+ Deploy AWS (EC2 / Elastic Beanstalk)
 
-- JDBC URL: `jdbc:h2:mem:tasksdb`
-- User: `sa`
-- Password: *(vazio)*
+👨‍💻 Autor
+Rafael dos Santos Vicente
+Desenvolvedor Backend | Java | Spring | Cloud
 
----
+<a href="https://github.com/SEU-USUARIO"> <img src="https://img.shields.io/badge/GitHub-RafaelSV9-000?logo=github" /> </a>
 
-## 🌟 Ideias de evolução
-
-- Paginação na listagem de tarefas
-- Filtro por status (`/api/tasks?status=PENDING`)
-- Autenticação JWT
-- Documentação com OpenAPI/Swagger
-
----
-
-## 📜 Licença
-
-Projeto criado para estudo e portfólio. Fique à vontade para usar como base nos seus projetos.
+📜 Licença
+Este projeto está sob a licença MIT — uso livre para estudos e portfólio.
