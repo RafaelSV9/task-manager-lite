@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="https://svg-banners.vercel.app/api?type=origin&text1=Task%20Manager%20Lite%20✨&text2=Spring%20Boot%20API%20REST" width="100%" alt="Task Manager Lite Banner">
+</p>
+
 # Task Manager Lite
 
 Simple RESTful API for managing tasks, built with **Java 17 + Spring Boot 3 + H2**.
